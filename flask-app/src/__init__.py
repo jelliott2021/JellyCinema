@@ -15,11 +15,11 @@ def create_app():
     app.config['SECRET_KEY'] = 'someCrazyS3cR3T!Key.!'
 
     # these are for the DB object to be able to connect to MySQL. 
-    app.config['MYSQL_DATABASE_USER'] = 'webapp'
+    app.config['MYSQL_DATABASE_USER'] = 'jelly'
     app.config['MYSQL_DATABASE_PASSWORD'] = open('/secrets/db_password.txt').readline()
     app.config['MYSQL_DATABASE_HOST'] = 'db'
     app.config['MYSQL_DATABASE_PORT'] = 3306
-    app.config['MYSQL_DATABASE_DB'] = 'classicmodels'  # Change this to your DB name
+    app.config['MYSQL_DATABASE_DB'] = 'JellyCinema'  # Change this to your DB name
 
     # Initialize the database object with the settings above. 
     db.init_app(app)
@@ -28,10 +28,22 @@ def create_app():
     from src.views import views
     from src.customers.customers import customers
     from src.products.products  import products
+    from src.admins.admins import admins
+    from src.critics.critics import critics
+    from src.users.users import users
+    from src.movies.movies import movies
+    from src.shows.shows import shows
+    from src.seasons.seasons import seasons
 
     # Register the routes that we just imported so they can be properly handled
-    app.register_blueprint(views,       url_prefix='/classic')
-    app.register_blueprint(customers,   url_prefix='/classic')
-    app.register_blueprint(products,    url_prefix='/classic')
+    app.register_blueprint(views,       url_prefix='/view')
+    app.register_blueprint(customers,   url_prefix='/customer')
+    app.register_blueprint(products,    url_prefix='/product')
+    app.register_blueprint(admins, url_prefix='/admin')
+    app.register_blueprint(critics, url_prefix='/critic')
+    app.register_blueprint(users, url_prefix='/user')
+    app.register_blueprint(movies, url_prefix='/movie')
+    app.register_blueprint(shows, url_prefix='/show')
+    app.register_blueprint(seasons, url_prefix='/season')
 
     return app
