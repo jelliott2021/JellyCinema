@@ -2,16 +2,20 @@
 
 Welcome to Jelly Cinema, a movie rating website built using MySQL and Flask. This project features three user types:
 
-### Admin
-Admins are responsible for managing the website, including adding and removing movies and shows, managing user and
-critic accounts
+### User
+Users are able to view movies and shows and reviews written by critics. They do not have any additional permissions
+within the website.
 
 ### Critic
 Critics are users who are able to rate movies and write reviews.
 
-### User
-Users are able to view movies and shows and reviews written by critics. They do not have any additional permissions
-within the website.
+### Admin
+Admins are responsible for managing the website, including adding and removing movies and shows, managing user and
+critic accounts
+
+# Video Overview
+https://clipchamp.com/watch/ARKx7wZKvtc
+
 
 # Getting Started
 
