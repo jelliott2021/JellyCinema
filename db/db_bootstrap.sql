@@ -137,19 +137,7 @@ CREATE TABLE MovieRating
             ON DELETE RESTRICT,
     CONSTRAINT rating_10 CHECK (Rating between 0 and 10)
 );
-/*
-CREATE FUNCTION JellyCinema.movieRating(cMovieID int)
-    RETURNS INT
-BEGIN
-    DECLARE ratingAvg double;
-    SELECT AVG(Rating) INTO ratingAvg
-    FROM MovieRating
-    WHERE MovieID = cMovieID;
-    RETURN ratingAvg;
-END;
-ALTER TABLE Movie
-    ADD COLUMN CriticRating DOUBLE GENERATED ALWAYS AS (JellyCinema.movieRating(MovieID)) STORED After IMDBRating;
-*/
+
 CREATE TABLE MovieGenre
 (
     GenreID INT auto_increment NOT NULL,
@@ -237,19 +225,7 @@ CREATE TABLE TVRating
             ON UPDATE CASCADE
             ON DELETE RESTRICT
 );
-/*
-CREATE FUNCTION JellyCinema.showRating(cShowID int)
-    RETURNS INT
-BEGIN
-    DECLARE ratingAvg double;
-    SELECT AVG(Rating) INTO ratingAvg
-    FROM TVRating
-    WHERE ShowID = cShowID;
-    RETURN ratingAvg;
-END;
-ALTER TABLE TVShow
-    ADD COLUMN CriticRating DOUBLE GENERATED ALWAYS AS (JellyCinema.showRating(ShowID)) STORED After IMDBRating;
-*/
+
 CREATE TABLE Season
 (
     SeasonID INT auto_increment NOT NULL,
@@ -276,19 +252,7 @@ CREATE TABLE Episode
             ON UPDATE CASCADE
             ON DELETE RESTRICT
 );
-/*
-CREATE FUNCTION JellyCinema.episodeCount(sSeasonID int)
-    RETURNS INT
-BEGIN
-    DECLARE EpisodeCount int;
-    SELECT COUNT(SeasonID) INTO EpisodeCount
-    FROM Episode
-    WHERE SeasonID = sSeasonID;
-    RETURN EpisodeCount;
-END;
-ALTER TABLE Season
-    ADD COLUMN numEpisode INT As (JellyCinema.episodeCount(SeasonID)) Stored After title;
-*/
+
 CREATE TABLE FavList
 (
     ListID   INT auto_increment NOT NULL,
